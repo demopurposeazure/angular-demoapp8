@@ -1,0 +1,46 @@
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-md-12">
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-md-12">
+    <img class="imagecss" src='assets/images/logo.png' />
+   <span class="middlealignment mt-4"> Welcome {{name}}</span>
+</div>
+<hr style="background-color:white;">
+
+<!--scheme : picnic,cool-->
+ <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-md-12 chartcss">
+   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-md-12 chartborder">
+        <ngx-charts-bar-vertical
+            [view]="view"
+            [scheme]="'cool'"
+            [schemeType]="'ordinal'"
+            [results]="multi"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [legendPosition]="'below'"
+            [showDataLabel]="showDataLabel"
+            [showGridLines]="true"
+            (select)="onSelect($event)">
+        </ngx-charts-bar-vertical>
+   </div>
+
+   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-md-12 chartborder">
+        <ngx-charts-gauge
+            [view]="view"
+            [scheme]="'cool'"
+            [schemeType]="'ordinal'"
+            [results]="gauzesingle"
+            [legend]="showLegend"
+            [legendPosition]="'below'"
+            (select)="onSelect($event)"
+            (activate)="onActivate($event)"
+            (deactivate)="onDeactivate($event)"
+            >
+        </ngx-charts-gauge>
+   </div>
+</div>
+</div>

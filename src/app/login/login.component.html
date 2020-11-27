@@ -1,0 +1,17 @@
+<div class="content" role="main">
+  <div class="card-container">
+    <div class="login" *ngIf="loginForm" >
+      <h1>Login</h1>
+      <form name="loginForm" [formGroup]="loginForm">
+        <input type="text" formControlName="userName" placeholder="Username" required="required" />
+        <input type="password" formControlName="passWord" placeholder="Password" required="required" />
+        <button type="button" (click)="loginMethod();" class="btn btn-primary btn-block btn-large">Log In</button>
+        <div class="error text-danger" style='font-size:12px;' *ngIf="(loginForm  && loginForm.invalid && ((loginForm.get('userName').touched && loginForm.get('userName').invalid) || (loginForm.get('passWord').touched && loginForm.get('passWord').invalid))) || showError">
+            Please Enter Valid Username & Password <br>
+            Hint : admin , admin
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</div>
