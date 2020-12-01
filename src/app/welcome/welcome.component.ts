@@ -44,17 +44,17 @@ export class WelcomeComponent implements OnInit {
   }
 
 public getGraphData(){
-  this.spinner.show();
-  this.appService.getGraphData().subscribe(res=>{
-    this.spinner.hide();
-    console.log(res);
-    let multi = res['multi'];
-    let gauzesingle = res['gauzesingle'];
-     Object.assign(this, { multi });
-     Object.assign(this,{ gauzesingle });
-  },err=>{
-    this.spinner.hide();
-  });
+  // this.spinner.show();
+  // this.appService.getGraphData().subscribe(res=>{
+  //   this.spinner.hide();
+  //   console.log(res);
+  //   let multi = res['multi'];
+  //   let gauzesingle = res['gauzesingle'];
+  //    Object.assign(this, { multi });
+  //    Object.assign(this,{ gauzesingle });
+  // },err=>{
+  //   this.spinner.hide();
+  // });
 }
 onSelect(event) {
     console.log(event);
