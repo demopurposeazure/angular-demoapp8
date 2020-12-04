@@ -156,4 +156,22 @@ export class AdminLayoutComponent implements OnInit {
       return bool;
   }
 
+settingsClick(event){
+    console.log("Event ",event);
+    if($('.fixed-plugin .dropdown').hasClass('show-dropdown')){
+         console.log($('.fixed-plugin .dropdown').hasClass('show-dropdown'));
+         console.log($('.fixed-plugin .dropdown').hasClass('show'));
+              if($('.fixed-plugin .dropdown').hasClass('show')){
+                   $('.fixed-plugin .dropdown').removeClass('show');
+              }
+              else { 
+                  console.log($('.fixed-plugin .dropdown'));
+                  setTimeout(()=>{
+                      $('.fixed-plugin .dropdown').addClass('show');
+                  },1000)
+                  
+              }
+              event.preventDefault();
+      }
+}
 }

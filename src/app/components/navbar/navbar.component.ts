@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, DoCheck } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
@@ -8,18 +8,18 @@ import { Router } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, DoCheck {
     private listTitles: any[];
     location: Location;
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
-    public userName:string;
+    public fullName:string;
 
     constructor(location: Location,  private element: ElementRef, private router: Router) {
       this.location = location;
           this.sidebarVisible = false;
-      this.userName = localStorage.getItem('name');
+      //this.fullName = JSON.parse(localStorage.getItem('userDetails')).fullname;
     }
 
     ngOnInit(){
@@ -34,6 +34,22 @@ export class NavbarComponent implements OnInit {
            this.mobile_menu_visible = 0;
          }
      });
+
+     $('#navbarDropdownMenuLink').click((e)=>{
+         if(!$('.notificationdropdown').hasClass('show')){
+              $('.notificationdropdown').addClass('show');
+         } else {
+              $('.notificationdropdown').removeClass('show');
+         }
+     });
+     $('#accountMenuLink').click((e)=>{
+         if(!$('.accountdropdown').hasClass('show')){
+              $('.accountdropdown').addClass('show');
+         } else {
+              $('.accountdropdown').removeClass('show');
+         }
+     });
+
     }
 
     sidebarOpen() {
@@ -123,5 +139,16 @@ export class NavbarComponent implements OnInit {
           }
       }
       return 'Dashboard';
+    }
+
+    public logOut(){
+        this.router.navigate(['/login']);
+        localStorage.removeItem('name');
+        localStorage.removeItem('userDetails');
+    }
+
+    ngDoCheck(){
+        let userData = JSON.parse(localStorage.getItem('userDetails'));
+        this.fullName =  userData && userData.hasOwnProperty('fullname') ? userData.fullname:'';
     }
 }

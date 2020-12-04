@@ -239,3 +239,16 @@
     transform: rotate(360deg);
   }
 }
+
+/*loader end*/
+
+.errorclass{
+   float: right;
+    position: absolute;
+    visibility: visible;
+    left: 311px;
+    /*top: 306px;*/
+    /* height: 100px; */
+    width: 100%;
+    z-index: 200;
+}

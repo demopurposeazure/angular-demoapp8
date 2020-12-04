@@ -8,37 +8,61 @@
                       <p class="card-category">Complete your profile</p>
                   </div>
                   <div class="card-body">
-                      <form>
+                      <form name="userForm" [formGroup]="userForm" *ngIf="userForm">
                           <div class="row">
-                              <div class="col-md-5">
+                              <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
                                     <input matInput placeholder="Company (disabled)"  disabled>
                                   </mat-form-field>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-6">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Username">
+                                    <input matInput formControlName="user_id" placeholder="User Id">
                                   </mat-form-field>
                               </div>
-                              <div class="col-md-4">
+                              <!--<div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Email address" type="email">
+                                    <input matInput formControlName="email" placeholder="Email address" type="email">
+                                  </mat-form-field>
+                              </div>-->
+                          </div>
+                          <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput formControlName="username" placeholder="Username">
+                                  </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                 <mat-form-field class="example-full-width">
+                                    <input matInput formControlName="email" placeholder="Email address" type="email">
                                   </mat-form-field>
                               </div>
                           </div>
                           <div class="row">
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Fist Name" type="text">
+                                  <input matInput formControlName="firstname" placeholder="Fist Name" type="text">
                                 </mat-form-field>
                               </div>
                               <div class="col-md-6">
                                 <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Last Name" type="text">
+                                  <input matInput formControlName="lastname" placeholder="Last Name" type="text">
                                 </mat-form-field>
                               </div>
                           </div>
                           <div class="row">
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="fullname" placeholder="Full Name" type="text">
+                                </mat-form-field>
+                              </div>
+                              <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                  <input matInput formControlName="mobile" placeholder="Mobile No." type="text">
+                                </mat-form-field>
+                              </div>
+                          </div>
+                          <!--<div class="row">
                               <div class="col-md-12">
                                 <mat-form-field class="example-full-width">
                                   <input matInput placeholder="Adress" type="text">
@@ -68,16 +92,16 @@
                                 <mat-form-field class="example-full-width">
                                    <textarea matInput placeholder="About Me"></textarea>
                                  </mat-form-field>
-                                  <!-- <div class="form-group">
+                                   <div class="form-group">
 
                                       <div class="form-group">
                                           <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
                                           <textarea class="form-control" rows="5"></textarea>
                                       </div>
-                                  </div> -->
+                                  </div> 
                               </div>
-                          </div>
-                          <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+                          </div>-->
+                          <button mat-raised-button [disabled]="userForm && userForm.invalid" type="submit" (click)="updateUser()" class="btn btn-danger pull-right">Update Profile</button>
                           <div class="clearfix"></div>
                       </form>
                   </div>
@@ -92,7 +116,7 @@
                   </div>
                   <div class="card-body">
                       <h6 class="card-category text-gray">Developer</h6>
-                      <h4 class="card-title" style="text-transform: capitalize;">{{userName}}</h4>
+                      <h4 class="card-title" style="text-transform: capitalize;">{{fullName}}</h4>
                       <p class="card-description">
                           This section is in progress.
                       </p>

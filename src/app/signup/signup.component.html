@@ -8,7 +8,13 @@
             <input type="password" formControlName="passWord" placeholder="Password" required="required" />
              <input type="text" formControlName="firstName" placeholder="First Name" required="required" />
             <input type="text" formControlName="lastName" placeholder="Last Name" required="required" />
+
              <input type="email" formControlName="email" placeholder="Email" required="required" />
+             <label *ngIf="signupForm.get('email').value && !validateEmailAndMobileNumber('email')" for="email" class="text-danger errorclass">Invalid Email</label>
+
+             <input type="number" formControlName="mobile" placeholder="Mobile No." required="required" />
+             <label *ngIf="this.signupForm.get('mobile').value && !validateEmailAndMobileNumber('mobile')"  for="mobile" class="text-danger errorclass">Invalid Mobile No.</label>
+
             <input type="text" formControlName="fullName" placeholder="Full Name" hidden />
             <button type="button" [disabled]="signupForm.invalid" (click)="submitUser();" class="btn btn-primary btn-block btn-large">Submit</button>
       </form>
