@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: image101 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image101
+  template:
+    metadata:
+      labels:
+        app: image101 
+    spec:
+      containers:
+        - name: image101 
+          image: azurecontainerregistrydemo.azurecr.io/image101
+          ports:
+          - containerPort: 80
