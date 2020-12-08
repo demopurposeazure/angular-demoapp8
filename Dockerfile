@@ -1,7 +1,22 @@
-FROM node:12.18.1
-ENV NODE_ENV=production
+# node base image
+FROM node:12.2.0-alpine as build
+
+# working directory
 WORKDIR /app
-COPY ["package.json", "package-lock.json*", "./"]
-RUN npm install --production
-COPY . .
-CMD [ "node", "server.js" ]
+
+# copy everything to current working directory 
+COPY . ./
+
+# run npm install
+RUN npm install &&\
+  npm run build
+
+# nginx base image
+FROM nginx:1.16.0-alpine
+
+# copy static contents of project to nginx html 
+COPY --from=build /app/dist/angular-demoapp8 /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
