@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: image100 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image100
+  template:
+    metadata:
+      labels:
+        app: image100 
+    spec:
+      containers:
+        - name: image100 
+          image: acrdemoregistry123.azurecr.io/image100
+          ports:
+          - containerPort: 80
