@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: webappimage02 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webappimage02
+  template:
+    metadata:
+      labels:
+        app: webappimage02 
+    spec:
+      containers:
+        - name: webappimage02 
+          image: acrdemoregistry123.azurecr.io/webappimage02
+          ports:
+          - containerPort: 80
