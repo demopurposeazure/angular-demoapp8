@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: imagev1 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: imagev1
+  template:
+    metadata:
+      labels:
+        app: imagev1 
+    spec:
+      containers:
+        - name: imagev1 
+          image: acrdemoregistry123.azurecr.io/imagev1
+          ports:
+          - containerPort: 80
