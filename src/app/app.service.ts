@@ -43,22 +43,22 @@ export class AppService {
   }
 
     public validateUser(req): Observable<any> {
-        return this._http.post('https://nodeapicontainers.azurewebsites.net/fetchUserDetails',req);
+        return this._http.post('/fetchUserDetails',req);
     }
 
     public getGraphData(): Observable<any>{
-        return this._http.get('https://nodeapicontainers.azurewebsites.net/graph');
+        return this._http.get('/graph');
     }
     
     public submitUser(data): Observable<any>{
-        return this._http.post('https://nodeapicontainers.azurewebsites.net/submitUser',data);
+        return this._http.post('/submitUser',data);
     }
 
     public fetchUser(data){
-        return this._http.post('https://nodeapicontainers.azurewebsites.net/showUserDetails',data);
+        return this._http.post('/showUserDetails',data);
     }
 
     public fetchTableData(data): Observable<any>{
-        return this._http.post('https://nodeapicontainers.azurewebsites.net/fetchTableData',data);
+        return this._http.post('/fetchTableData',data);
     }
 }
