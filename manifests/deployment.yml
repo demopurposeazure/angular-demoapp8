@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: uiv1 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uiv1
+  template:
+    metadata:
+      labels:
+        app: uiv1 
+    spec:
+      containers:
+        - name: uiv1 
+          image: acrdemoregistry123.azurecr.io/uiv1
+          ports:
+          - containerPort: 80
